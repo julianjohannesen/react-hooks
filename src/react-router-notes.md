@@ -68,4 +68,31 @@ Note that the Links in the first component will always render in this example. T
 
 ## Questions
 
-- 1. What if you want to have your links and switch in different components. Can you do that? How do you do that?
+### 1. Can a Router and Links be in different components?
+
+Yes. You can put your Router and Links in different components. Just remember that wherever your Router goes, you'll need to import the components that are rendered by different routes.
+
+### 2. Why can't I see my pages when I reload?
+
+If you're serving from the production directory, e.g. "dist" or "build", then if you get an error when reloading a page, that's because the routing doesn't exist at the time that the page loads. Rather, the routing is created in the process of loading the page.
+
+Just creating a catch-all route will not fix this problem. If your page has links that do not function, the catchall will work. However, typing non-existent links into the address bar will cause the same error you saw above.
+
+This doesn't happen in development if you're configured webpack.config.js's "devserver" setting. 
+
+```js
+	devServer: {
+		// This line will use the History API to preserve your links, even when you refresh the page. Note, it only works in development.
+		historyApiFallback: true,
+		contentBase: "./",
+		hot: true,
+	},
+```
+
+To fix this problem in the production build, you have to make changes on the backend. Creating an isomorphic backend in which backend routing mirrors frontend routing  is the best solution, but you can also create a catchall.  The way to do that depends on your server.
+
+### 3. Why isn't my NoMatch component rendering?
+
+See question 2 first.
+
+### 4. If you have dynamic links with URL parameters, how do you create a NoMatch route that will render when the URL parameter does not exist? For example, I might have /articles/:topic and have article topics "react" and "react-router". How do I render NoMatch for /articles/bananas?

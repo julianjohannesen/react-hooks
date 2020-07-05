@@ -43,7 +43,7 @@ function OtherSnippet() {
 
 // An example of a counter component using the useState hook
 function ExampleCounter() {
-	// Declare a new state variable, which we'll call "count"
+	// Declare a new state variable, which we'll call "count". Later we'll update count with "setCount". SetCount works much like setState, except that state is overwritten, NOT merged. The argument for useState sets count's initial value.
 	const [count, setCount] = useState(0);
 
 	return (

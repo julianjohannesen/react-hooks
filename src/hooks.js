@@ -10,6 +10,7 @@ import {
 	useParams,
 } from "react-router-dom";
 import { HookExamples } from "./hook-examples.js"
+import NoMatch from "./no-match.js";
 
 // A simple hooks page with links to other pages like useState and useEffect
 export function Hooks() {
@@ -41,6 +42,7 @@ export function Hooks() {
 				<Route path={match.path}>
 					<h3>Please select a topic.</h3>
 				</Route>
+			
 			</Switch>
 		</div>
 	</Router>

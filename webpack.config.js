@@ -40,7 +40,12 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin()
 	],
 	devServer: {
-		contentBase: path.resolve(__dirname, "dist"),
+		// This line will use the History API to preserve your links, even when you refresh the page. However, it only works in development.
+		historyApiFallback: true,
+		// Previously this was set to "dist"
+		contentBase: "./",
 		hot: true,
 	},
 };
+
+

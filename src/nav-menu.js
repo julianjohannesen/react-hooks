@@ -16,6 +16,9 @@ export default function Nav() {
 			<li>
 				<NavLink to="/notes">Notes</NavLink>
 			</li>
+			<li>
+				<NavLink to="/nttaowi">Broken link example</NavLink>
+			</li>
 		</ul>
     </nav>
     );
