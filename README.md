@@ -106,3 +106,29 @@ Custom Hooks are more of a convention than a feature. If a function’s name sta
 
 - useContext lets you subscribe to React context without introducing nesting
 - useReducer lets you manage local state of complex components with a reducer
+
+## useState
+
+Here's the class version of the counter up above.
+
+```js
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+}
+```
