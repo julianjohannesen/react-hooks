@@ -82,7 +82,7 @@ This doesn't happen in development if you've configured webpack.config.js's "dev
 	},
 ```
 
-To fix this problem in the production build, you have to make changes on the backend. Creating an isomorphic backend in which backend routing mirrors frontend routing is the best solution. An isomorphic solution allows search engines to crawl your links for SEO purposes. However, you can  much more easily create a catchall on the backend.  The way to do that depends on your server/hosting service. For example, Netlify provides a "_redirects" file where you can specify that any GET request be redirected to "/". This works because the only time your app needs to send a request to the server is when the page first loads, if the page is reloaded, or if a user types a URL into the browser's address bar, rather than navigating to it.
+To fix this problem in the production build, you have to make changes on the backend. Creating an isomorphic backend in which backend routing mirrors frontend routing is the best solution. An isomorphic solution allows search engines to crawl your links for SEO purposes. However, you can  much more easily create a catchall on the backend.  The way to do that depends on your server/hosting service. For example, Netlify allows a netlify.toml file in your root directory where you can specify that any GET request be redirected to "/index.html". This works because the only time your app needs to send a request to the server is when the page first loads, if the page is reloaded, or if a user types a URL into the browser's address bar, rather than navigating to it.
 
 ### 3. Why isn't my NoMatch component rendering?
 
