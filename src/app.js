@@ -3,10 +3,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Nav from "./nav-menu.js";
-import {Hooks} from "./hooks.js";
+import Nav from "./components/nav-menu.js";
+import {Hooks} from "./pages/hooks.js";
 //import Notes from "../README.md";
-import NoMatch from "./no-match.js";
+import NoMatch from "./pages/no-match.js";
 
 const Home = () => <h2>Home</h2>;
 const Notes = () => <h2>Notes</h2>;

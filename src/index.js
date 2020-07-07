@@ -5,8 +5,8 @@ import ReactDOM from "react-dom";
 import App from "./app.js";
 import Helmet from "react-helmet";
 import { TypographyStyle, GoogleFont } from "react-typography";
-import typography from "./typography.js";
-import "./styles.css";
+import typography from "./utils/typography.js";
+import "./assets/styles.css";
 
 ReactDOM.render(
 	<React.Fragment>
