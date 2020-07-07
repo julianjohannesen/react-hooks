@@ -9,7 +9,7 @@ import {
 	useRouteMatch,
 	useParams,
 } from "react-router-dom";
-import { HookExamples } from "./hook-examples.js"
+import { HookExamples } from "../components/hook-examples.js"
 import NoMatch from "./no-match.js";
 
 // A simple hooks page with links to other pages like useState and useEffect

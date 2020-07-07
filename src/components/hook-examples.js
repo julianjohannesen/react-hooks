@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {HooksAtAGlance} from "./hooks-at-a-glance.js";
+import {HooksAtAGlance} from "../pages/hooks-at-a-glance.js";
 import NoMatch from "./no-match.js";
 
 // The useEffect hook is similar to the componentDidMount, componentDidUpdate, and componentWillUnmount APIs, but in one unified API
