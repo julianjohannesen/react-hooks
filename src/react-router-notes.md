@@ -1,17 +1,10 @@
 # React Router Notes
 
-v5 allows RR to use hooks. However, the next version of RR will change the API even further. It should be here within a year, judging by where we are now. Writing this in July 2020.
-
-## Forward and Back buttons
-
-React Router respects your browsers forward and back buttons. You can do any of the following and the forward and back buttons will work. 
-- 1. build routes to top level pages, e.g. /about, /login or whatever
-- 2. build routes to nested routes, e.g. /about/staff, /articles/topics
-- 3. build routes to dynamic routes that change based on a URL parameter, e.g. /articles/topics/:topicId
+Not only is this project helping me understand React Hooks, it's also the first time I've used hooks in React Router. Here are some notes on using hooks in routing.
 
 ## useRouteMatch and useParams
 
-In order to build a nested, dynamic route, you need to use both useRouteMatch and useParams. 
+In order to build a nested, dynamic route, you need to use both useRouteMatch (uRM) and useParams (uP) hooks. 
 
 ### uRM allows you to build nested routes like /articles/topics. 
 
@@ -23,16 +16,16 @@ This first component contains the routing to a second component that will displa
 
 ```jsx
 export function NestedDynamicRoute(){
-
+    // uRM returns a match object that we store in "match"
     let match = useRouteMatch();
     return (
     <Router>
-        
+        {/* The match object's URL property provides the preceding part of the URL  */}
         <Link to={'${match.url}/Kittens'}>Kittens</Link>
         <Link to={'${match.url}/Puppies'}>Puppies</Link>
 
         <Switch>
-
+            {/* The match object's path property provides the preceding part of the file path */}
             <Route 
                 path={'${match.path}/:topicId'}
                 children={<Topics />}
@@ -78,7 +71,7 @@ If you're serving from the production directory, e.g. "dist" or "build", then if
 
 Just creating a catch-all route will not fix this problem. If your page has links that do not function, the catchall will work. However, typing non-existent links into the address bar will cause the same error you saw above.
 
-This doesn't happen in development if you're configured webpack.config.js's "devserver" setting. 
+This doesn't happen in development if you've configured webpack.config.js's "devserver" setting. 
 
 ```js
 	devServer: {
@@ -89,10 +82,12 @@ This doesn't happen in development if you're configured webpack.config.js's "dev
 	},
 ```
 
-To fix this problem in the production build, you have to make changes on the backend. Creating an isomorphic backend in which backend routing mirrors frontend routing  is the best solution, but you can also create a catchall.  The way to do that depends on your server.
+To fix this problem in the production build, you have to make changes on the backend. Creating an isomorphic backend in which backend routing mirrors frontend routing is the best solution. An isomorphic solution allows search engines to crawl your links for SEO purposes. However, you can  much more easily create a catchall on the backend.  The way to do that depends on your server/hosting service. For example, Netlify allows a netlify.toml file in your root directory where you can specify that any GET request be redirected to "/index.html". This works because the only time your app needs to send a request to the server is when the page first loads, if the page is reloaded, or if a user types a URL into the browser's address bar, rather than navigating to it.
 
 ### 3. Why isn't my NoMatch component rendering?
 
 See question 2 first.
 
 ### 4. If you have dynamic links with URL parameters, how do you create a NoMatch route that will render when the URL parameter does not exist? For example, I might have /articles/:topic and have article topics "react" and "react-router". How do I render NoMatch for /articles/bananas?
+
+You need to make sure that the second Switch that contains your nested routing with parameters also contains a fallback NoMatch Route.
