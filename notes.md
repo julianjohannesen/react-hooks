@@ -5,7 +5,7 @@ I did this to hopefully get Netlify's config file to work correctly and redirect
 I was bummed that Netlify doesn't let you redirect to just "/". I tried and it didn't work. Redirecting index.html does work.
 
 ### Problem - The 404 behavior is weird. 
-On the dev server, I've set the devserver settings in webpack config to handle 404s from reloads and nonexistent urls that are typed into the address bar (thereby sending a request to the server). A reload simply reloads the page as one would expect. Nonexistent URLs that are typed in are caught by the catchall route that renders the NoMatch component.
+On the dev server, I've set the devserver settings in webpack config to handle reloads, nested URLs, and nonexistent urls that are typed into the address bar (thereby sending a request to the server). Now, a reload simply reloads the page as one would expect. What's really cool though is that all of the URLs work even if you type them directly into the address bar rather than navigating to them. Nonexistent URLs that are typed in are caught by the catchall route that renders the NoMatch component.
 
 I had a directory "/notes" that was ignoring bad nested directories like "/notes/blah" and reloading the page to /notes without catching the error and rendering my NoMatch component. The solution was simple. Just add "exact" to the route. I also had to make this change for two other nested directory routes - "/hooks/use-state" and "hooks/use-effect". Those to URLs were doing the same thing and ignoring URLs like "/hooks/use-state/blah".
 
