@@ -15,9 +15,9 @@ export default function App() {
 	return (
 		<Router>
             <Nav />
-            {/* A <Switch> looks through its children <Route>s and renders the first one that matches the current URL. */}
             <Switch>
-                <Route exact path="/">
+                {/* In production, redirects go to index.html. Including index.html here ensures that  that when a redirect happens it doesn't load the home page, but also trigger NoMatch rendering with "No match for index.html." */}
+                <Route exact path={["/", "/index.html"]}>
                     <Home />
                 </Route>
                 <Route path="/hooks">
@@ -26,6 +26,9 @@ export default function App() {
                 <Route exact path="/notes">
                     <Notes />
                 </Route>
+                {/* <Route exact path="/index.html">
+                    <Home />
+                </Route> */}
                 <Route path="*">
                     <NoMatch />
                 </Route>
