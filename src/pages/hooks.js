@@ -38,7 +38,7 @@ export function Hooks() {
 
 			<Switch>
                 {/*What is match.path doing? The placeholder ":hookId" stands in for whatever the user navigates too, e.g. /hooks/use-state. But what if they navigate to a non-existent topic?   */}
-				<Route path={`${match.path}/:hookId`} children={<HookExamples />}>
+				<Route exact path={`${match.path}/:hookId`} children={<HookExamples />}>
 				</Route>
                 {/*This page is the plain old /hooks page*/}
 				<Route path={match.path}>

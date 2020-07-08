@@ -23,7 +23,7 @@ export default function App() {
                 <Route path="/hooks">
                     <Hooks />
                 </Route>
-                <Route path="/notes">
+                <Route exact path="/notes">
                     <Notes />
                 </Route>
                 <Route path="*">
