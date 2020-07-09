@@ -2,13 +2,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-export default function NoMatch() {
+export default function NoMatch({hookId}) {
 	let location = useLocation();
 
 	return (
 		<div>
 			<h3>
-				No match for <code>{location.pathname}</code>
+				No match for <code>{location.pathname || hookId}</code>
 			</h3>
 		</div>
 	);

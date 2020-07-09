@@ -15,25 +15,28 @@ export default function App() {
 	return (
 		<Router>
             <Nav />
+
             <Switch>
+
                 {/* In production, redirects go to index.html. Including index.html here ensures that  that when a redirect happens it doesn't load the home page, but also trigger NoMatch rendering with "No match for index.html." */}
                 <Route exact path={["/", "/index.html"]}>
                     <Home />
                 </Route>
+
                 <Route path="/hooks">
                     <Hooks />
                 </Route>
+
                 <Route exact path="/notes">
                     <Notes />
                 </Route>
-                {/* <Route exact path="/index.html">
-                    <Home />
-                </Route> */}
+                
                 <Route path="*">
                     <NoMatch />
                 </Route>
                 
             </Switch>
+            
         </Router>
     );
 }

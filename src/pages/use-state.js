@@ -56,11 +56,11 @@ function ExampleCounter() {
 	);
 }
 
-export function HooksAtAGlance(){
+export function UseStateExplanation(){
     return (
         <div>
         <h2>
-            Hooks at a Glance
+            The useState Hook
         </h2>
 
         <ExampleCounter />

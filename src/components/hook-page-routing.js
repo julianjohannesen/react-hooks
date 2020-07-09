@@ -1,31 +1,10 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import {HooksAtAGlance} from "../pages/hooks-at-a-glance.js";
+import { useParams, useRouteMatch } from "react-router-dom";
+import { UseStateExplanation } from "../pages/use-state.js";
+import { UseEffectExplanation 	} from "../pages/use-effect.js";
 import NoMatch from "../pages/no-match.js";
-
-// The useEffect hook is similar to the componentDidMount, componentDidUpdate, and componentWillUnmount APIs, but in one unified API
-export function UseEffectExample() {
-	const [count, setCount] = useState(0);
-
-	// Similar to componentDidMount and componentDidUpdate:
-	useEffect(() => {
-		// Update the document title using the browser API
-		document.title = `You clicked ${count} times`;
-	});
-
-	return (
-		<div>
-			<h2>Counter 2</h2>
-			<p>
-				Another counter that adds a side effect with the useEffect hook.
-			</p>
-			<p>You clicked {count} times</p>
-			<button onClick={() => setCount(count + 1)}>Click me</button>
-		</div>
-	);
-}
 
 // An example of a custom hook function. useFriendStatus will work like useState, but also subscribe and then unsubscribe us from the chat API that we need to query.
 function UseFriendStatus(friendID) {
@@ -61,17 +40,18 @@ function FriendStatus(props) {
 	return isOnline ? "Online" : "Offline";
 }
 
-export function HookExamples() { 
+export function HookPageRouting() { 
+	console.log(useRouteMatch())
 	// useParams contains the dynamic part of our url /hooks/:hookId
 	let { hookId } = useParams();
 	if(hookId === 'use-state'){
-		return <HooksAtAGlance />
+		return <UseStateExplanation />
 	}
 	else if(hookId === 'use-effect'){
-		return <UseEffectExample />
+		return <UseEffectExplanation />
 	}
 	else {
-		return <NoMatch />
+		return <NoMatch hookId={hookId} />
 	}
 	
 }
