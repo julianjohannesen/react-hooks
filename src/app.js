@@ -7,8 +7,8 @@ import Nav from "./components/nav-menu.js";
 import {Hooks} from "./pages/hooks.js";
 //import Notes from "../README.md";
 import NoMatch from "./pages/no-match.js";
+import Home from "./pages/home.js"
 
-const Home = () => <h2>Home</h2>;
 const Notes = () => <h2>Notes</h2>;
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
                 </Route>
                 
             </Switch>
-            
+
         </Router>
     );
 }

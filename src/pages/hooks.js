@@ -21,9 +21,10 @@ export function Hooks() {
 		<div>
 			<h2>Hooks</h2>
 
+				<nav>
+
 				<ul>
 					<li>
-						{/*match.url must contain the current url*/}
 						<Link to={`${match.url}/use-state`}>useState</Link>
 					</li>
 					<li>
@@ -33,18 +34,19 @@ export function Hooks() {
 						<Link to={`${match.url}/broken-link`}>Broken Link</Link>
 					</li>
 				</ul>
+				</nav>
 
 {/* The Hooks page has its own <Switch> with more routes that build on the /hooks URL path. You can think of the 2nd <Route> here as an "index" page for all topics, or the page that is shown when no topic is selected */}
 
 			<Switch>
 
+				{/*This page is the plain old /hooks page. It renders regardless of whether there are any articles to show. */}
+				<Route exact path={match.path}>
+					<h3>Please select a topic.</h3>
+				</Route>
+
                 {/* Making this dynamic with ":hookid" means that my catchall route won't render unless I do some testing within each hook example component  */}
 				<Route exact path={`${match.path}/:hookId`} children={<HookPageRouting />}></Route>
-                
-				{/*This page is the plain old /hooks page. It render regardless of whether there are any pages to show. */}
-				{/* <Route path={match.path}>
-					<h3>Please select a topic.</h3>
-				</Route> */}
 
 				<Route path="*">
 					<NoMatch />
